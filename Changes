@@ -1,5 +1,9 @@
 Revision history for URI
 
+{{$NEXT}}
+  - converted distribution packaging to Dist::Zilla, and unified all package
+    $VERSIONs
+
 2016-01-08   Karen Etheridge <ether@cpan.org>
 
   Release 1.71

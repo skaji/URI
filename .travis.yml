@@ -8,12 +8,8 @@ perl:
   - "5.14"
   - "5.12"
   - "5.10"
-before_install:
-  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
-  - source ~/travis-perl-helpers/init
-  - build-perl
-  - perl -V
-  - cpanm Test::DistManifest
-  - build-dist
+install:
+  - dzil authordeps --missing | cpanm || { cat ~/.cpanm/build.log ; false ; }
+  - dzil listdeps --author --missing | cpanm || { cat ~/.cpanm/build.log ; false ; }
 script:
-  - make test
+  - HARNESS_OPTIONS=j9:c dzil test --author
